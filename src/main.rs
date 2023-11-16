@@ -1,7 +1,7 @@
 pub mod components;
 mod systems;
 
-use bevy::prelude::*;
+use bevy::{prelude::*, sprite::MaterialMesh2dBundle};
 use bevy_rapier2d::prelude::*;
 use components::*;
 use systems::*;
@@ -26,7 +26,11 @@ fn setup_graphics(mut commands: Commands) {
     commands.spawn(Camera2dBundle::default());
 }
 
-fn setup_physics(mut commands: Commands) {
+fn setup_physics(
+    mut commands: Commands,
+    mut meshes: ResMut<Assets<Mesh>>,
+    mut materials: ResMut<Assets<ColorMaterial>>,
+) {
     /* Create the ground. */
     commands.spawn((
         Collider::cuboid(500.0, 50.0),
@@ -55,6 +59,14 @@ fn setup_physics(mut commands: Commands) {
 
     // Create a moving platform
     commands.spawn((
+        // MaterialMesh2dBundle {
+        //     mesh: meshes
+        //         .add(Mesh::from(shape::Quad::new(Vec2 { x: 400.0, y: 50.0 })))
+        //         .into(),
+        //     material: materials.add(ColorMaterial::from(Color::ORANGE_RED)),
+        //     transform: Transform::from_xyz(0.0, 0.0, 0.0),
+        //     ..default()
+        // },
         RigidBody::KinematicPositionBased,
         Collider::cuboid(200.0, 25.0),
         TransformBundle::from(Transform::from_xyz(0.0, 0.0, 0.0)),
