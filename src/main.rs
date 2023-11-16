@@ -59,17 +59,16 @@ fn setup_physics(
 
     // Create a moving platform
     commands.spawn((
-        // MaterialMesh2dBundle {
-        //     mesh: meshes
-        //         .add(Mesh::from(shape::Quad::new(Vec2 { x: 400.0, y: 50.0 })))
-        //         .into(),
-        //     material: materials.add(ColorMaterial::from(Color::ORANGE_RED)),
-        //     transform: Transform::from_xyz(0.0, 0.0, 0.0),
-        //     ..default()
-        // },
+        MaterialMesh2dBundle {
+            mesh: meshes
+                .add(Mesh::from(shape::Quad::new(Vec2 { x: 400.0, y: 50.0 })))
+                .into(),
+            material: materials.add(ColorMaterial::from(Color::ORANGE_RED)),
+            transform: Transform::from_xyz(0.0, 0.0, 0.0),
+            ..default()
+        },
         RigidBody::KinematicPositionBased,
         Collider::cuboid(200.0, 25.0),
-        TransformBundle::from(Transform::from_xyz(0.0, 0.0, 0.0)),
         MovingPlatform {
             direction: 1,
             min_x: -200.0,
