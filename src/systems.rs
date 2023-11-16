@@ -1,12 +1,7 @@
 use bevy::prelude::*;
 use bevy_rapier2d::prelude::*;
 
-#[derive(Component, Debug)]
-pub struct MovingPlatform {
-    pub direction: i32,
-    pub min_x: f32,
-    pub max_x: f32,
-}
+use super::components::*;
 
 pub fn print_ball_altitude(positions: Query<&Transform, With<RigidBody>>) {
     for transform in positions.iter() {

@@ -1,7 +1,9 @@
+pub mod components;
 mod systems;
 
 use bevy::prelude::*;
 use bevy_rapier2d::prelude::*;
+use components::*;
 use systems::*;
 
 fn main() {
