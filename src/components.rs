@@ -6,3 +6,6 @@ pub struct MovingPlatform {
     pub min_x: f32,
     pub max_x: f32,
 }
+
+#[derive(Component, Debug)]
+pub struct Ball;
