@@ -40,7 +40,7 @@ fn setup_physics(
     /* Create the bouncing ball. */
     commands.spawn((
         RigidBody::Dynamic,
-        Collider::ball(50.0),
+        Collider::ball(20.0),
         Restitution::coefficient(0.7),
         TransformBundle::from(Transform::from_xyz(0.0, 200.0, 0.0)),
     ));
