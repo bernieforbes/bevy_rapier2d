@@ -39,10 +39,15 @@ fn setup_physics(
 
     /* Create the bouncing ball. */
     commands.spawn((
+        MaterialMesh2dBundle {
+            mesh: meshes.add(Mesh::from(shape::Circle::new(20.0))).into(),
+            material: materials.add(ColorMaterial::from(Color::BEIGE)),
+            transform: Transform::from_xyz(0.0, 200.0, 0.0),
+            ..default()
+        },
         RigidBody::Dynamic,
         Collider::ball(20.0),
         Restitution::coefficient(0.7),
-        TransformBundle::from(Transform::from_xyz(0.0, 200.0, 0.0)),
     ));
 
     // Create a moving platform
